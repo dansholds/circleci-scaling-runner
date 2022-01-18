@@ -6,6 +6,6 @@ workflows:
 jobs:
   runner:
     machine: true
-    resource_class: danielholdsworth/macos-resource-class
+    resource_class: danielholdsworth/ubuntu-resource-class
     steps:
       - run: echo "Hi I'm on Runners!"
