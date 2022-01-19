@@ -2,10 +2,16 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner
+      - runner-1
+      - runner-2
 jobs:
-  runner:
+  runner-1:
     machine: true
-    resource_class: danielholdsworth/k8-resource-class
+    resource_class: danielholdsworth/ubuntu-resource-class
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - run: echo "Hi I'm on Runner 1!"
+  runner-2:
+    machine: true
+    resource_class: danielholdsworth/ubuntu2-resource-class
+    steps:
+      - run: echo "Hi I'm on Runner 2!"
