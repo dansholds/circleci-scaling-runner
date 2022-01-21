@@ -1,17 +1,19 @@
 version: 2.1
-workflows:
-  testing:
-    jobs:
-      - runner-1
-      - runner-2
-jobs:
-  runner-1:
-    machine: true
-    resource_class: danielholdsworth/ubuntu-resource-class
-    steps:
-      - run: echo "Hi I'm on Runner 1!"
-  runner-2:
-    machine: true
-    resource_class: danielholdsworth/ubuntu2-resource-class
-    steps:
-      - run: echo "Hi I'm on Runner 2!"
+orbs:
+  docker: circleci/docker@2.0.1
+
+jobs:       
+  PublishTo-Development-Hub: 
+      docker:
+        - image: cimg/base
+      steps: 
+        - checkout
+        - setup_remote_docker:
+            version: 19.03.13
+        - run: 
+            name: Publish Docker Image to Docker Hub
+            command: |
+              echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin 
+              docker build -t testimage/test .
+
+
