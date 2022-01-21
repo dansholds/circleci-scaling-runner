@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@2.0.1
 
 jobs:       
-  PublishTo-Development-Hub: 
+  build: 
       docker:
         - image: cimg/base
       steps: 
@@ -11,9 +11,11 @@ jobs:
         - setup_remote_docker:
             version: 19.03.13
         - run: 
-            name: Publish Docker Image to Docker Hub
+            name: Build Docker Image
             command: |
-              echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin 
               docker build -t testimage/test .
 
-
+workflows:
+  docker-build:
+    jobs:
+      - build
