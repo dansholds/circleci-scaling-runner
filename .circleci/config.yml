@@ -3,8 +3,8 @@ workflows:
   testing:
     jobs:
       - runner1
-      #- runner2
-      #- runner3
+      - runner2
+      - runner3
 jobs:
   runner1:
     machine: true
