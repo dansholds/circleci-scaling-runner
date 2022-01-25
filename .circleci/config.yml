@@ -5,10 +5,19 @@ workflows:
       - runner1
       #- runner2
       #- runner3
+  scaling:
+    jobs:
+      - scale
 jobs:
-  runner1:
+  scale:
     machine: true
     resource_class: danielholdsworth/macos-resource-class
+    steps:
+      - checkout
+      - run: ./scale.sh
+  runner1:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
     steps:
       - run: echo "Hi I'm runner job 1!" ; ls ../../
   runner2:
