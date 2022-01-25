@@ -10,14 +10,14 @@ jobs:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 1!"
+      - run: echo "Hi I'm runner job 1!" ; pwd
   runner2:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 2!"
+      - run: echo "Hi I'm runner job 2!" ; pwd
   runner3:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 3!"
+      - run: echo "Hi I'm runner job 3!" ; pwd
