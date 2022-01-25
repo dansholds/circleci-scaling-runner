@@ -37,7 +37,7 @@ jobs:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 4!"
+      - run: echo "Hi I'm runner job 4!!"
   runner5:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
