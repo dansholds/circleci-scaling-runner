@@ -22,29 +22,29 @@ jobs:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 1!" ; ls ../../../
+      - run: echo "Hi I'm runner job 1!"
   runner2:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 2!" ; ls ../../../
+      - run: echo "Hi I'm runner job 2!"
   runner3:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 3!" ; ls ../../../
+      - run: echo "Hi I'm runner job 3!"
   runner4:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 4!" ; ls ../../../
+      - run: echo "Hi I'm runner job 4!"
   runner5:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 5!" ; ls ../../../
+      - run: echo "Hi I'm runner job 5!"
   runner6:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
     steps:
-      - run: echo "Hi I'm runner job 6!" ; ls ../../../
+      - run: echo "Hi I'm runner job 6!"
