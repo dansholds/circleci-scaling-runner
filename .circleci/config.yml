@@ -1,21 +1,23 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@2.0.1
-
-jobs:       
-  build: 
-      docker:
-        - image: cimg/base:stable
-      steps: 
-        - checkout
-        - setup_remote_docker:
-            version: 19.03.13
-        - run: 
-            name: Build Docker Image
-            command: |
-              docker build -t testimage/test .
-
 workflows:
-  docker-build:
+  testing:
     jobs:
-      - build
+      - runner1
+      #- runner2
+      #- runner3
+jobs:
+  runner1:
+    machine: true
+    resource_class: danielholdsworth/macos-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 1!" ; ls ../../
+  runner2:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 2!" ; ls ../../
+  runner3:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 3!" ; ls ../../
