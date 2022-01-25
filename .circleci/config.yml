@@ -5,6 +5,9 @@ workflows:
       - runner1
       - runner2
       - runner3
+      - runner4
+      - runner5
+      - runner6
   scaling:
     jobs:
       - scale
@@ -30,3 +33,18 @@ jobs:
     resource_class: danielholdsworth/docker-resource-class
     steps:
       - run: echo "Hi I'm runner job 3!" ; ls ../../../
+  runner4:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 4!" ; ls ../../../
+  runner5:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 5!" ; ls ../../../
+  runner6:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 6!" ; ls ../../../
