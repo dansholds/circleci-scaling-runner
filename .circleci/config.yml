@@ -3,12 +3,12 @@ workflows:
   testing:
     jobs:
       - runner1
-      - runner2
-      - runner3
+      #- runner2
+      #- runner3
 jobs:
   runner1:
     machine: true
-    resource_class: danielholdsworth/docker-resource-class
+    resource_class: danielholdsworth/macos-resource-class
     steps:
       - run: echo "Hi I'm runner job 1!" ; ls ../../
   runner2:
