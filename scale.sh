@@ -14,8 +14,7 @@ if [ $WAITING_TASKS != 0 ]; then
     #for loop that creates as many runner containers as needed and suffixs a number to the runner name based on how many there is
     for i in $(seq $WAITING_TASKS); do
         CIRCLECI_RESOURCE_CLASS=$RESOURCE_CLASS \
-        CIRCLECI_API_TOKEN=$DOCKER_RESOURCE_TOKEN \
-        docker run -d --rm --env CIRCLECI_API_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i 5600498a75fa
+        docker run -d --rm --env $DOCKER_RESOURCE_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i 5600498a75fa
     done
 
     echo "$WAITING_TASKS containers spun-up"
