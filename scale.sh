@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RESOURCE_CLASS=danielholdsworth/docker-resource-class
+#RESOURCE_CLASS=danielholdsworth/docker-resource-class
 
 #Gather the number of waiting tasks in the docker-resource-class
 WAITING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks?resource-class='$RESOURCE_CLASS'' -H \
