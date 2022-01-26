@@ -1,5 +1,7 @@
 #!/bin/bash
 
+RESOURCE_CLASS=danielholdsworth/docker-resource-class
+
 #Gather the number of waiting tasks in the docker-resource-class
 WAITING_TASKS=$(curl -X GET "https://runner.circleci.com/api/v2/runner/tasks?resource-class=danielholdsworth/docker-resource-class" -H \
 'Circle-Token: a21996172f944cf4648fd21dc051911f6f335064' | sed 's/[^0-9]*//g')
@@ -7,7 +9,7 @@ WAITING_TASKS=$(curl -X GET "https://runner.circleci.com/api/v2/runner/tasks?res
 RUNNING_TASKS=1
 
 #if statement that is only actions if the waiting jobs are NOT 0
-if (( $WAITING_TASKS != 0 )); then
+if [ $WAITING_TASKS != 0 ]; then
     #for loop that creates as many runner containers as needed and suffixs a number to the runner name based on how many there is
     for i in $(seq $WAITING_TASKS); do
         CIRCLECI_RESOURCE_CLASS=danielholdsworth/docker-resource-class \
