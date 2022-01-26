@@ -3,7 +3,7 @@
 RESOURCE_CLASS=danielholdsworth/docker-resource-class
 
 #Gather the number of waiting tasks in the docker-resource-class
-WAITING_TASKS=$(curl -X GET "https://runner.circleci.com/api/v2/runner/tasks?resource-class=danielholdsworth/docker-resource-class" -H \
+WAITING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks?resource-class='$RESOURCE_CLASS'' -H \
 'Circle-Token: a21996172f944cf4648fd21dc051911f6f335064' | sed 's/[^0-9]*//g')
 #Set initial value for the RUNNING_TASKS variable
 RUNNING_TASKS=1
