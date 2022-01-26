@@ -1,13 +1,12 @@
 #!/bin/bash
 
-#RESOURCE_CLASS= This variable is stored in the project env vars on CCI
-#CIRCLE_TOKEN= This is your CCI API Token and should be stored in CCI env vars
-
 #Gather the number of waiting tasks in the docker-resource-class
 WAITING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks?resource-class='$RESOURCE_CLASS'' -H \
 'Circle-Token: '$CIRCLE_TOKEN'' | sed 's/[^0-9]*//g')
 #Set initial value for the RUNNING_TASKS variable
 RUNNING_TASKS=1
+#Set docker image ID
+DOCKER_IMAGE_ID=5600498a75fa
 
 #if statement that is only actions if the waiting jobs are NOT 0
 if [ $WAITING_TASKS != 0 ]; then
@@ -15,7 +14,7 @@ if [ $WAITING_TASKS != 0 ]; then
     for i in $(seq $WAITING_TASKS); do
         CIRCLECI_RESOURCE_CLASS=$RESOURCE_CLASS \
         CIRCLECI_API_TOKEN=$DOCKER_RESOURCE_TOKEN \
-        docker run -d --rm --env CIRCLECI_API_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i 5600498a75fa
+        docker run -d --rm --env CIRCLECI_API_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i $DOCKER_IMAGE_ID
     done
 
     echo "$WAITING_TASKS containers spun-up"
