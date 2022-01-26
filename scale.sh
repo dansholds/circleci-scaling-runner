@@ -5,8 +5,6 @@ WAITING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks?res
 'Circle-Token: '$CIRCLE_TOKEN'' | sed 's/[^0-9]*//g')
 #Set initial value for the RUNNING_TASKS variable
 RUNNING_TASKS=1
-#Set docker image ID
-DOCKER_IMAGE_ID=5600498a75fa
 
 #if statement that is only actions if the waiting jobs are NOT 0
 if [ $WAITING_TASKS != 0 ]; then
