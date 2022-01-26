@@ -8,7 +8,7 @@ RESOURCE_CLASS=danielholdsworth/docker-resource-class
 #Set initial value for the RUNNING_TASKS variable
 RUNNING_TASKS=1
 #Gather the number of waiting tasks in the docker-resource-class
-WAITING_TASKS=$(curl -X GET "https://runner.circleci.com/api/v2/runner/tasks?resource-class=$RESOURCE_CLASS" -H \
+WAITING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks?resource-class=$RESOURCE_CLASS' -H \
 'Circle-Token: $CIRCLECI_TOKEN' | sed 's/[^0-9]*//g')
 
 
@@ -23,7 +23,7 @@ if (( $WAITING_TASKS != 0 )); then
 
     #until block that polls for the amount of running jobs in the resource-class, runs until this number is 0
     until [ $RUNNING_TASKS == 0 ]; do
-        RUNNING_TASKS=$(curl -X GET "https://runner.circleci.com/api/v2/runner/tasks/running?resource-class=$RESOURCE_CLASS" -H \
+        RUNNING_TASKS=$(curl -X GET 'https://runner.circleci.com/api/v2/runner/tasks/running?resource-class=$RESOURCE_CLASS' -H \
         'Circle-Token: $CIRCLECI_TOKEN' | sed 's/[^0-9]*//g')
     done
 
