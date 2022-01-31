@@ -28,7 +28,7 @@ if [ $WAITING_TASKS != 0 ]; then
 
     #once the jobs are finished, loop through the intial variable and remove the created containers
     for i in $(seq $WAITING_TASKS); do
-         sudo docker rm $(docker stop $(docker ps -a -q --filter ancestor=circledan/rubyrunner --format="{{.ID}}"))
+         sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=circledan/rubyrunner --format="{{.ID}}"))
     done
 
     echo "$WAITING_TASKS containers removed...All done."
