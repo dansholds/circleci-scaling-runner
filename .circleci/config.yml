@@ -14,7 +14,7 @@ workflows:
 jobs:
   scale:
     machine: true
-    resource_class: danielholdsworth/ubuntu-resource-class
+    resource_class: danielholdsworth/macos-resource-class
     steps:
       - checkout
       - run: ./scale.sh

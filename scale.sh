@@ -13,7 +13,7 @@ if [ $WAITING_TASKS != 0 ]; then
     for i in $(seq $WAITING_TASKS); do
         CIRCLECI_RESOURCE_CLASS=$RESOURCE_CLASS \
         CIRCLECI_API_TOKEN=$DOCKER_RESOURCE_TOKEN \
-        sudo docker run -d --rm --env CIRCLECI_API_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i $DOCKER_IMAGE_ID
+        docker run -d --rm --env CIRCLECI_API_TOKEN --env CIRCLECI_RESOURCE_CLASS --name runner-$i $DOCKER_IMAGE_ID
     done
 
     echo "$WAITING_TASKS containers spun-up"
@@ -28,7 +28,7 @@ if [ $WAITING_TASKS != 0 ]; then
 
     #once the jobs are finished, loop through the intial variable and remove the created containers
     for i in $(seq $WAITING_TASKS); do
-         sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=circledan/rubyrunner --format="{{.ID}}"))
+         docker rm $(docker stop $(docker ps -a -q --filter ancestor=circledan/rubyrunner --format="{{.ID}}"))
     done
 
     echo "$WAITING_TASKS containers removed...All done."
