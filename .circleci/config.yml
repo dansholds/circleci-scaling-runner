@@ -1,4 +1,9 @@
 version: 2.1
+
+auth: &ghcrconfig
+  username: $GHCR_USERNAME
+  password: $GHCR_PASSWORD
+
 workflows:
   testing:
     jobs:
@@ -18,6 +23,7 @@ jobs:
   ghcr-test:
     docker:
       - image: ghcr.io/danielholdsworth/runner-test:latest
+        auth: *ghcrconfig 
     steps:
       - run: echo "using ghcr"
   scale:
