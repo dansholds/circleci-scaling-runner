@@ -22,7 +22,7 @@ workflows:
 jobs:
   ghcr-test:
     docker:
-      - image: ghcr.io/danielholdsworth/runner-test:latest
+      - image: ghcr.io/danielholdsworth/runner-test:amd64
         auth: *ghcrconfig 
     steps:
       - checkout
