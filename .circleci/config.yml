@@ -25,7 +25,7 @@ jobs:
       - image: ghcr.io/danielholdsworth/runner-test:latest
         auth: *ghcrconfig 
     steps:
-      - run: echo "using ghcr"
+      - checkout
   scale:
     machine: true
     resource_class: danielholdsworth/macos-resource-class
