@@ -29,7 +29,7 @@ jobs:
     machine: true
     resource_class: danielholdsworth/ubuntu-resource-class
     steps:
-      - run: "test"
+      - run: echo "test"
   ghcr-test:
     docker:
       - image: ghcr.io/danielholdsworth/runner-test:amd64
