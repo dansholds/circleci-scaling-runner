@@ -19,7 +19,17 @@ workflows:
   ghcr:
     jobs:
       - ghcr-test
+      
+  linux-rerun-test:
+    jobs:
+      - linux-rerun
+
 jobs:
+  linux-rerun:
+    machine: true
+    resource_class: danielholdsworth/ubuntu-resource-class
+    steps:
+      - run: "test"
   ghcr-test:
     docker:
       - image: ghcr.io/danielholdsworth/runner-test:amd64
