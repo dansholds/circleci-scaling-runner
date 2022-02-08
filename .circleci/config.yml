@@ -16,9 +16,9 @@ workflows:
   scaling:
     jobs:
       - scale
-  ghcr:
+  linux:
     jobs:
-      - ghcr-test
+      - linux-rerun
 
 jobs:
   linux-rerun:
@@ -26,12 +26,6 @@ jobs:
     resource_class: danielholdsworth/ubuntu-resource-class
     steps:
       - run: echo "test"
-  ghcr-test:
-    docker:
-      - image: ghcr.io/danielholdsworth/runner-test:amd64
-        auth: *ghcrconfig 
-    steps:
-      - checkout
   scale:
     machine: true
     resource_class: danielholdsworth/macos-resource-class
