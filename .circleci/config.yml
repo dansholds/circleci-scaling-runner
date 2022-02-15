@@ -1,8 +1,8 @@
 version: 2.1
 
-auth: &ghcrconfig
-  username: $GHCR_USERNAME
-  password: $GHCR_PASSWORD
+#auth: &ghcrconfig
+  #username: $GHCR_USERNAME
+  #password: $GHCR_PASSWORD
 
 workflows:
   testing:
