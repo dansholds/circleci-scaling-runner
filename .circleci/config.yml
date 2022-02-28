@@ -1,9 +1,5 @@
 version: 2.1
 
-#auth: &ghcrconfig
-  #username: $GHCR_USERNAME
-  #password: $GHCR_PASSWORD
-
 workflows:
   testing:
     jobs:
@@ -18,14 +14,14 @@ workflows:
       - scale
   linux:
     jobs:
-      - linux-rerun
+      - linux-server
 
 jobs:
-  linux-rerun:
+  linux-server:
     machine: true
     resource_class: danielholdsworth/ubuntu-resource-class
     steps:
-      - run: echo "test"
+      - run: echo "Hi I'm Running on an Ubuntu Server!"
   scale:
     machine: true
     resource_class: danielholdsworth/macos-resource-class
