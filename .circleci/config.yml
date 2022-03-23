@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  aws-s3: circleci/aws-s3@3.0.0
+
 workflows:
   #testing:
     #jobs:
@@ -15,18 +18,19 @@ workflows:
   linux:
     jobs:
       - linux-server
-  ip_range_test:
+  s3_pull_job:
     jobs:
-      - ip-test
+      - s3-pull
 
 jobs:
-  ip-test:
-    circleci_ip_ranges: true
+  s3-pull:
     docker:
+    # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - run: sudo apt update; sudo apt install dnsutils
-      - run: dig dan.circleserver3.com
+      - aws-s3/copy:
+          to: . 
+          from: s3://ip-range-test-again/cat.jpg
   linux-server:
     circleci_ip_ranges: true
     machine: true
