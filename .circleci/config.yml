@@ -27,7 +27,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - aws-cli/install
-      - run: touch ~/.aws/credentials
+      - run: mkdir ~/.aws; touch ~/.aws/credentials
       - run: aws s3 cp s3://dan-ip-range/cat.jpg cat.jpg
   linux-server: 
     circleci_ip_ranges: true
