@@ -30,7 +30,7 @@ jobs:
     steps:
       - aws-s3/copy:
           to: cat.jpg 
-          from: s3://ip-range-test-again/cat.jpg
+          from: s3://dan-ip-range/cat.jpg
   linux-server:
     circleci_ip_ranges: true
     machine: true
