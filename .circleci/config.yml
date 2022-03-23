@@ -20,7 +20,7 @@ workflows:
       - test-range
 jobs:
   test-range:
-    circleci_ip_ranges: true
+    #circleci_ip_ranges: true
     docker:
       - image: cimg/base:stable
     steps:
