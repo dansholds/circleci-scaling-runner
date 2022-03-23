@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  aws-cli: circleci/aws-cli@2.1.0
-
 workflows:
   #testing:
     #jobs:
@@ -18,15 +15,15 @@ workflows:
   linux:
     jobs:
       - linux-server
-  cli_install:
+  ip-ranges:
     jobs:
-      - install-cli
+      - test-range
 jobs:
-  install-cli:
+  test-range:
+    circleci_ip_ranges: true
     docker:
       - image: cimg/base:stable
     steps:
-      - aws-cli/install
       - run: curl http://54.75.34.32/
   linux-server: 
     circleci_ip_ranges: true
