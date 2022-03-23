@@ -18,9 +18,6 @@ workflows:
   linux:
     jobs:
       - linux-server
-  s3_pull_job:
-    jobs:
-      - s3-pull
   cli_install:
     jobs:
       - install-cli
@@ -30,11 +27,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - aws-cli/install
-  s3-pull:
-    docker:
-      - image: cimg/base:stable
-    steps:
-        - run: aws s3 cp s3://dan-ip-range/cat.jpg cat.jpg
+      - run: aws s3 cp s3://dan-ip-range/cat.jpg cat.jpg
   linux-server: 
     circleci_ip_ranges: true
     machine: true
