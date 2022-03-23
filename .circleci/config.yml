@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@3.0.0
+  aws-cli: circleci/aws-cli@2.1.0
 
 workflows:
   #testing:
@@ -21,17 +21,21 @@ workflows:
   s3_pull_job:
     jobs:
       - s3-pull
-
+  cli_install:
+    jobs:
+      - install-cli
 jobs:
-  s3-pull:
+  install-cli:
     docker:
-    # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - aws-s3/copy:
-          to: cat.jpg 
-          from: s3://dan-ip-range/cat.jpg
-  linux-server:
+      - aws-cli/install
+  s3-pull:
+    docker:
+      - image: cimg/base:stable
+    steps:
+        - run: aws s3 cp s3://dan-ip-range/cat.jpg cat.jpg
+  linux-server: 
     circleci_ip_ranges: true
     machine: true
     resource_class: danielholdsworth/ubuntu-resource-class
