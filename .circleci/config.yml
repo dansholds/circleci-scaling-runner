@@ -12,15 +12,15 @@ workflows:
   #scaling:
     #jobs:
       #- scale
-  linux:
-    jobs:
-      - linux-server
+  #linux:
+    #jobs:
+      #- linux-server
   ip-ranges:
     jobs:
       - test-range
 jobs:
   test-range:
-    circleci_ip_ranges: true
+    #circleci_ip_ranges: true
     docker:
       - image: cimg/base:stable
     steps:
