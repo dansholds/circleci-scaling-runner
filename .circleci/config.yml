@@ -28,7 +28,7 @@ jobs:
   linux-server: 
     circleci_ip_ranges: true
     machine: true
-    resource_class: danielholdsworth/ubuntu-resource-class
+    #resource_class: danielholdsworth/ubuntu-resource-class
     steps:
       - run: echo "Hi I'm Running on an Ubuntu Server!"
   scale:
