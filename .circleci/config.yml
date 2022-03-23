@@ -1,22 +1,31 @@
 version: 2.1
 
 workflows:
-  testing:
-    jobs:
-      - runner1
-      - runner2
-      - runner3
-      - runner4
-      - runner5
-      - runner6
-  scaling:
-    jobs:
-      - scale
+  #testing:
+    #jobs:
+      #- runner1
+      #- runner2
+      #- runner3
+      #- runner4
+      #- runner5
+      #- runner6
+  #scaling:
+    #jobs:
+      #- scale
   linux:
     jobs:
       - linux-server
+  ip_range_test:
+    jobs:
+      - ip-test
 
 jobs:
+  ip-test:
+    circleci_ip_ranges: true
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: echo "Testing"
   linux-server:
     circleci_ip_ranges: true
     machine: true
