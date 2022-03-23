@@ -22,9 +22,10 @@ workflows:
 jobs:
   ip-test:
     circleci_ip_ranges: true
-    machine: true
+    docker:
+      - image: cimg/base:stable
     steps:
-      - run: echo "Testing"
+      - run: ping -c 4 18.188.90.159
   linux-server:
     circleci_ip_ranges: true
     machine: true
