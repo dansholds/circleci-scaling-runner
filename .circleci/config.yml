@@ -25,7 +25,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - run: sudo apt update; sudo apt install iputils-ping 
+      - run: sudo apt update; sudo apt install dnsutils
       - run: dig www.google.com
   linux-server:
     circleci_ip_ranges: true
