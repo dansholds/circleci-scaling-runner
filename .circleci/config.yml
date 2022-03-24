@@ -23,6 +23,7 @@ jobs:
     circleci_ip_ranges: true
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - run: curl http://54.75.34.32/
   linux-server: 
