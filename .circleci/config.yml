@@ -1,16 +1,59 @@
 version: 2.1
 
 workflows:
-
-  ip-ranges:
+  testing:
     jobs:
-      - test-range
-
+      - runner1
+      - runner2
+      - runner3
+      - runner4
+      - runner5
+      - runner6
+  scaling:
+    jobs:
+      - scale
+  linux:
+    jobs:
+      - linux-server
 jobs:
-  test-range:
-    circleci_ip_ranges: true
-    docker:
-      - image: cimg/base:stable
-    resource_class: small
+  linux-server: 
+    machine: true
+    resource_class: danielholdsworth/ubuntu-resource-class
     steps:
-      - run: curl http://54.75.34.32/
+      - run: echo "Hi I'm Running on an Ubuntu Server!"
+  scale:
+    machine: true
+    resource_class: danielholdsworth/macos-resource-class
+    steps:
+      - checkout
+      - run: ./scale.sh
+  runner1:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 1!"
+  runner2:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 2!"
+  runner3:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 3!"
+  runner4:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 4!!"
+  runner5:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 5!"
+  runner6:
+    machine: true
+    resource_class: danielholdsworth/docker-resource-class
+    steps:
+      - run: echo "Hi I'm runner job 6!"
