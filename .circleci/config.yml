@@ -14,19 +14,24 @@ workflows:
       - scale
   linux:
     jobs:
-      - linux-server
+      - linux-runner
+
 jobs:
-  linux-server: 
+  linux-runner: 
     machine: true
     resource_class: danielholdsworth/ubuntu-resource-class
     steps:
       - run: echo "Hi I'm Running on an Ubuntu Server!"
+      - run: uname
+
   scale:
     machine: true
     resource_class: danielholdsworth/macos-resource-class
     steps:
       - checkout
+      - run: uname
       - run: ./scale.sh
+
   runner1:
     machine: true
     resource_class: danielholdsworth/docker-resource-class
