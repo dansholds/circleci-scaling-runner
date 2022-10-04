@@ -22,7 +22,7 @@ jobs:
   test-range:
     circleci_ip_ranges: true
     docker:
-      - image: cimg/base:stable
+      - image: node:latest
     resource_class: small
     steps:
       - run: curl http://54.75.34.32/
